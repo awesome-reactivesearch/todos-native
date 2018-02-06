@@ -9,6 +9,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@appbaseio/reactivesearch-native": "^0.4.1",
     "@expo/samples": "2.1.1",
     "expo": "^25.0.0",
     "react": "16.2.0",
