@@ -1,7 +1,10 @@
 import { Notifications } from 'expo';
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
+import { Container } from 'native-base';
+import { ReactiveBase } from '@appbaseio/reactivesearch-native';
 
+import CONFIG from '../constants/Config';
 import MainTabNavigator from './MainTabNavigator';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
@@ -17,7 +20,7 @@ const RootStackNavigator = StackNavigator(
         fontWeight: 'normal',
       },
     }),
-  }
+  },
 );
 
 export default class RootNavigator extends React.Component {
@@ -29,9 +32,13 @@ export default class RootNavigator extends React.Component {
     this._notificationSubscription && this._notificationSubscription.remove();
   }
 
-  render() {
-    return <RootStackNavigator />;
-  }
+  render = () => (
+    <ReactiveBase app={CONFIG.app} credentials={CONFIG.credentials} type={CONFIG.type}>
+      <Container>
+        <RootStackNavigator />
+      </Container>
+    </ReactiveBase>
+  );
 
   _registerForPushNotifications() {
     // Send our push token over to our backend so we can receive notifications
