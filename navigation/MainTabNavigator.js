@@ -1,24 +1,33 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
+import CONSTANTS from '../constants';
 
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import AllTodos from '../screens/AllScreen';
+import ActiveScreen from '../screens/ActiveScreen';
+import CompletedScreen from '../screens/CompletedScreen';
+
+const commonNavigationOptions = ({ navigation }) => ({
+  header: null,
+  title: navigation.state.routeName,
+});
 
 export default TabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
+    [CONSTANTS.ALL]: {
+      screen: AllTodos,
+      navigationOptions: commonNavigationOptions,
     },
-    Links: {
-      screen: LinksScreen,
+    [CONSTANTS.ACTIVE]: {
+      screen: ActiveScreen,
+      navigationOptions: commonNavigationOptions,
     },
-    Settings: {
-      screen: SettingsScreen,
+    [CONSTANTS.COMPLETED]: {
+      screen: CompletedScreen,
+      navigationOptions: commonNavigationOptions,
     },
   },
   {
@@ -27,21 +36,22 @@ export default TabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Home':
-            iconName =
-              Platform.OS === 'ios'
-                ? `ios-information-circle${focused ? '' : '-outline'}`
-                : 'md-information-circle';
+          case CONSTANTS.ALL:
+            iconName = 'format-list-bulleted';
+            // Platform.OS === 'ios'
+            //   ? `ios-information-circle${focused ? '' : '-outline'}`
+            //   : 'md-information-circle';
             break;
-          case 'Links':
-            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
+          case CONSTANTS.ACTIVE:
+            iconName = 'filter-center-focus';
+            // Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
             break;
-          case 'Settings':
-            iconName =
-              Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
+          case CONSTANTS.COMPLETED:
+            iconName = 'playlist-add-check';
+          // Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
         }
         return (
-          <Ionicons
+          <MaterialIcons
             name={iconName}
             size={28}
             style={{ marginBottom: -3 }}
@@ -51,8 +61,8 @@ export default TabNavigator(
       },
     }),
     tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
-    animationEnabled: false,
-    swipeEnabled: false,
-  }
+    tabBarPosition: 'top',
+    animationEnabled: true,
+    swipeEnabled: true,
+  },
 );
