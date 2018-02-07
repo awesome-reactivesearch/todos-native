@@ -1925,6 +1925,10 @@ deepmerge@^1.3.0, deepmerge@^1.5.1:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-1.5.2.tgz#10499d868844cdad4fee0842df8c7f6f0c95a753"
 
+deepmerge@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.0.1.tgz#25c1c24f110fb914f80001b925264dd77f3f4312"
+
 default-require-extensions@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/default-require-extensions/-/default-require-extensions-1.0.0.tgz#f37ea15d3e13ffd9b437d33e1a75b5fb97874cb8"
@@ -5400,6 +5404,14 @@ react-native-keyboard-aware-scroll-view@0.4.2:
 react-native-maps@0.19.0:
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.19.0.tgz#ce94fad1cf360e335cb4338a68c95f791e869074"
+
+react-native-paper@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-0.0.9.tgz#82704fc062d89d495862dc4414284cf64082c0d3"
+  dependencies:
+    color "^2.0.1"
+    deepmerge "^2.0.1"
+    prop-types "^15.6.0"
 
 react-native-platform-touchable@^1.1.1:
   version "1.1.1"
