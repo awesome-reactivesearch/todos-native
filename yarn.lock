@@ -136,7 +136,7 @@
   dependencies:
     cross-spawn "^5.1.0"
 
-"@expo/vector-icons@^6.2.0":
+"@expo/vector-icons@^6.2.0", "@expo/vector-icons@^6.2.2":
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-6.2.2.tgz#441edb58a52c0f4e5b4aba1e6f8da1e87cea7e11"
   dependencies:
