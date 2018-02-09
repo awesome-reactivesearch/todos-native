@@ -1,5 +1,6 @@
 export default {
-  app: 'todomvc',
-  credentials: 'kDoV3s5Xk:4994cac6-00a3-4179-b159-b0adbfdde34b',
-  type: 'todo_reactjs',
+  url: 'https://scalr.api.appbase.io',
+  app: 'todos-native',
+  credentials: 'ylk5rT3SA:c2f74c2c-7812-4f1b-af13-2679d0a3cf79',
+  type: 'todos-native',
 };

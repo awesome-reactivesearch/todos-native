@@ -14,6 +14,7 @@
     "@expo/samples": "2.1.1",
     "@expo/vector-icons": "^6.2.2",
     "expo": "^25.0.0",
+    "prop-types": "^15.6.0",
     "react": "16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-paper": "^0.0.9",
