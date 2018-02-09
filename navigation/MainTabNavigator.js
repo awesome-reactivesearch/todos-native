@@ -1,5 +1,5 @@
+/* eslint react/prop-types: 0 */
 import React from 'react';
-import { Platform } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 
@@ -13,6 +13,7 @@ import CompletedScreen from '../screens/CompletedScreen';
 const commonNavigationOptions = ({ navigation }) => ({
   header: null,
   title: navigation.state.routeName,
+  custom: 'mycustompropertyvalue',
 });
 
 export default TabNavigator(
@@ -38,17 +39,12 @@ export default TabNavigator(
         switch (routeName) {
           case CONSTANTS.ALL:
             iconName = 'format-list-bulleted';
-            // Platform.OS === 'ios'
-            //   ? `ios-information-circle${focused ? '' : '-outline'}`
-            //   : 'md-information-circle';
             break;
           case CONSTANTS.ACTIVE:
             iconName = 'filter-center-focus';
-            // Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
             break;
           case CONSTANTS.COMPLETED:
             iconName = 'playlist-add-check';
-          // Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
         }
         return (
           <MaterialIcons
