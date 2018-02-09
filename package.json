@@ -4,7 +4,9 @@
   "scripts": {
     "test": "node ./node_modules/jest/bin/jest.js --watchAll",
     "start": "exp start -c --lan",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clean": "watchman watch-del-all",
+    "postinstall": "npm run clean && npm run start"
   },
   "jest": {
     "preset": "jest-expo"
