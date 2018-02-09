@@ -17,8 +17,8 @@ class TodoModel {
 
   addTodo(todo) {
     const body = {
-      createdAt: Date.now(),
       ...todo,
+      createdAt: Date.now(),
     };
 
     this.appbaseRef

@@ -50,6 +50,11 @@ class AddEditTodo extends Component {
     };
   }
 
+  onSubmit = () => {
+    if (this.state.title.length > 0) this.props.onAddEdit(this.state);
+    return null;
+  };
+
   setStateUtil = (property, value = undefined) => {
     this.setState({
       [property]: value,
@@ -73,7 +78,7 @@ class AddEditTodo extends Component {
             underLineColorAndroid="transparent"
             underlineColor="transparent"
             blurOnSubmit
-            onSubmitEditing={() => this.props.onAddEdit(this.state)}
+            onSubmitEditing={this.onSubmit}
             onChangeText={changedTitle => this.setStateUtil('title', changedTitle)}
             value={title}
           />
