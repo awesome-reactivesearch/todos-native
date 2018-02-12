@@ -10,7 +10,6 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "ios": {
-      "supportsTablet": true,
       "bundleIdentifier": "com.appbaseio.todos"
     }
   }
