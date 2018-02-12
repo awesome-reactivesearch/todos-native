@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "todos-native",
+    "name": "Reactive Todos",
     "description": "A very interesting project.",
-    "slug": "todos-native",
+    "slug": "todos",
     "privacy": "public",
     "sdkVersion": "25.0.0",
     "platforms": ["ios", "android"],
@@ -10,7 +10,8 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.appbaseio.todos"
     }
   }
 }
