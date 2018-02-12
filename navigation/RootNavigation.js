@@ -1,8 +1,8 @@
 import Expo from 'expo';
 import React from 'react';
-import { StatusBar, View } from 'react-native';
+import { StatusBar, View, Platform } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { Container, Spinner } from 'native-base';
+import { Container, Spinner, Text } from 'native-base';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { ReactiveBase } from '@appbaseio/reactivesearch-native';
 
@@ -10,6 +10,7 @@ import CONFIG from '../constants/Config';
 import COLORS from '../constants/Colors';
 import MainTabNavigator from './MainTabNavigator';
 import Header from '../components/Header';
+import AddTodoButton from '../components/AddTodoButton';
 
 const RootStackNavigator = StackNavigator(
   {
@@ -52,10 +53,12 @@ export default class RootNavigator extends React.Component {
       );
     }
 
+    const spaceFixer = Platform.OS === 'ios' ? -45 : -80;
+
     return (
       <ReactiveBase app={CONFIG.app} credentials={CONFIG.credentials} type={CONFIG.type}>
         <PaperProvider>
-          <Container style={{ marginTop: -80 }}>
+          <Container style={{ marginTop: spaceFixer }}>
             <RootStackNavigator />
           </Container>
         </PaperProvider>

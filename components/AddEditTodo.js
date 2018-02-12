@@ -1,25 +1,25 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, TextInput, Dimensions, Text, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, TextInput, Dimensions, Text, TouchableOpacity } from 'react-native';
 import { View, Body, CheckBox } from 'native-base';
-import { Paragraph, Checkbox, Colors, TouchableRipple, withTheme } from 'react-native-paper';
+// import { Paragraph, Checkbox, Colors, TouchableRipple, withTheme } from 'react-native-paper';
 import { TextField } from '@appbaseio/reactivesearch-native';
 import { Ionicons } from '@expo/vector-icons';
 /* eslint-enable */
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.white,
-    paddingVertical: 8,
-  },
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: Colors.white,
+//     paddingVertical: 8,
+//   },
 
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-});
+//   row: {
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//   },
+// });
 
 const propTypes = {
   todo: PropTypes.shape({
@@ -74,6 +74,7 @@ class AddEditTodo extends Component {
           alignItems: 'center',
           paddingRight: 10,
           paddingBottom: 5,
+          paddingTop: 5,
         }}
       >
         <CheckBox checked={completed} onPress={() => this.setStateUtil('completed', !completed)} />
@@ -95,6 +96,8 @@ class AddEditTodo extends Component {
             onSubmitEditing={this.onSubmit}
             onChangeText={changedTitle => this.setStateUtil('title', changedTitle)}
             value={title}
+            autoCorrect={false}
+            autoCapitalize="none"
             onBlur={onBlur}
           />
         </Body>
@@ -104,12 +107,16 @@ class AddEditTodo extends Component {
               style={{ width: '100%', flex: 1 }}
             >
             */}
-        <Ionicons
-          name="ios-trash-outline"
-          color={`${title.length > 0 ? 'black' : 'grey'}`}
-          size={23}
-          onPress={this.props.onCancelDelete}
-        />
+        <TouchableOpacity
+          onPress={() => this.props.onCancelDelete}
+          style={{ paddingLeft: 25, paddingRight: 15 }}
+        >
+          <Ionicons
+            name="ios-trash-outline"
+            color={`${title.length > 0 ? 'black' : 'grey'}`}
+            size={23}
+          />
+        </TouchableOpacity>
         {/*
               </TouchableWithoutFeedback>
             */}
