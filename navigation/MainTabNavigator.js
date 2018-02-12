@@ -6,30 +6,26 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Colors from '../constants/Colors';
 import CONSTANTS from '../constants';
 
-import AllTodos from '../screens/AllScreen';
-import ActiveScreen from '../screens/ActiveScreen';
-import CompletedScreen from '../screens/CompletedScreen';
+import TodosScreen from '../screens/TodosScreen';
+
+// todos data to be shared between all screens
+const data = [];
 
 const commonNavigationOptions = ({ navigation }) => ({
   header: null,
   title: navigation.state.routeName,
-  custom: 'mycustompropertyvalue',
 });
 
-export default TabNavigator(
+const routeOptions = {
+  screen: TodosScreen,
+  navigationOptions: commonNavigationOptions,
+};
+
+const TabNav = TabNavigator(
   {
-    [CONSTANTS.ALL]: {
-      screen: AllTodos,
-      navigationOptions: commonNavigationOptions,
-    },
-    [CONSTANTS.ACTIVE]: {
-      screen: ActiveScreen,
-      navigationOptions: commonNavigationOptions,
-    },
-    [CONSTANTS.COMPLETED]: {
-      screen: CompletedScreen,
-      navigationOptions: commonNavigationOptions,
-    },
+    [CONSTANTS.ALL]: routeOptions,
+    [CONSTANTS.ACTIVE]: routeOptions,
+    [CONSTANTS.COMPLETED]: routeOptions,
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -62,3 +58,7 @@ export default TabNavigator(
     swipeEnabled: true,
   },
 );
+
+const TabNavExport = () => <TabNav screenProps={{ todos: { data } }} />;
+
+export default TabNavExport;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ScrollView, StyleSheet, FlatList } from 'react-native';
 import { View } from 'native-base';
 import { ReactiveList } from '@appbaseio/reactivesearch-native';
@@ -8,6 +9,8 @@ import AddTodoButton from '../components/AddTodoButton';
 import TodoItem from '../components/TodoItem';
 import Utils from '../utils';
 import AddEditTodo from '../components/AddEditTodo';
+import TODO_TYPE from '../types/todo';
+import CONSTANTS from '../constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +30,13 @@ const styles = StyleSheet.create({
   },
 });
 
+const propTypes = {
+  screenProps: PropTypes.shape({
+    todos: TODO_TYPE,
+  }).isRequired,
+  screen: PropTypes.oneOf([CONSTANTS.ALL, CONSTANTS.ACTIVE, CONSTANTS.COMPLETED]).isRequired,
+};
+
 export default class AllScreen extends React.Component {
   state = {
     addingTodo: false,
@@ -41,19 +51,41 @@ export default class AllScreen extends React.Component {
   };
 
   onAllData = (todos, streamData) => {
-    console.log('@onAllData - todos: ', todos);
-    console.log('@onAllData - streamData: ', streamData);
+    // console.log('@onAllData - todos: ', todos);
+    // console.log('@onAllData - streamData: ', streamData);
     const todosData = Utils.mergeTodos(todos, streamData);
+
+    // setting todosData in screenProps to be shared between all components
+    this.props.screenProps.todos.data = todosData;
+
+    // filter data based on "screen": [All | Active | Completed]
+    const filteredData = this.filterTodosData(todosData);
+
     return (
       <FlatList
         style={{ width: '100%', top: 15 }}
-        data={todosData || []}
+        data={filteredData || []}
         keyExtractor={item => item._id}
         renderItem={({ item: todo }) => (
           <TodoItem todo={todo} onAddEdit={this.model.update} onDelete={this.model.destroy} />
         )}
       />
     );
+  };
+
+  filterTodosData = (todosData) => {
+    const { screen } = this.props;
+
+    switch (screen) {
+      case CONSTANTS.ALL:
+        return todosData;
+      case CONSTANTS.ACTIVE:
+        return todosData.filter(todo => !todo.completed);
+      case CONSTANTS.COMPLETED:
+        return todosData.filter(todo => todo.completed);
+    }
+
+    return todosData;
   };
 
   render() {
@@ -88,8 +120,11 @@ export default class AllScreen extends React.Component {
             </View>
           ) : null}
         </ScrollView>
+
         <AddTodoButton onPress={() => this.setState({ addingTodo: true })} />
       </View>
     );
   }
 }
+
+AllScreen.propTypes = propTypes;
