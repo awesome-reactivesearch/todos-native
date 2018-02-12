@@ -54,9 +54,8 @@ export default class RootNavigator extends React.Component {
 
     return (
       <ReactiveBase app={CONFIG.app} credentials={CONFIG.credentials} type={CONFIG.type}>
-        <Header />
         <PaperProvider>
-          <Container>
+          <Container style={{ marginTop: -80 }}>
             <RootStackNavigator />
           </Container>
         </PaperProvider>

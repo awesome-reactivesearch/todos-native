@@ -2,17 +2,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, Dimensions, Text, TouchableWithoutFeedback } from 'react-native';
 import PropTypes from 'prop-types';
-import { View } from 'native-base';
-import { Paragraph, Checkbox, Colors, TouchableRipple, withTheme } from 'react-native-paper';
+import { View, CheckBox, ListItem, Body } from 'native-base';
+// import { Paragraph, Checkbox, Colors, TouchableRipple, withTheme } from 'react-native-paper';
 import { TextField } from '@appbaseio/reactivesearch-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import AddEditTodo from './AddEditTodo';
 /* eslint-enable */
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: '#FFFFFF',
     paddingVertical: 8,
   },
 
@@ -88,21 +88,39 @@ class TodoItem extends Component {
               width: '100%',
               flexDirection: 'row',
               alignItems: 'center',
+              paddingRight: 10,
+              paddingBottom: 7,
             }}
           >
-            <TouchableRipple onPress={() => this.onTodoItemToggle(todo, onAddEdit)}>
-              <View pointerEvents="none">
-                <Checkbox checked={todo.completed} />
-              </View>
-            </TouchableRipple>
+            <CheckBox
+              checked={todo.completed}
+              onPress={() => this.onTodoItemToggle(todo, onAddEdit)}
+            />
+            <Body
+              style={{
+                flex: 1,
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start',
+                paddingLeft: 25,
+              }}
+            >
+              <Text>{todo.title}</Text>
+            </Body>
+            {/*
             <TouchableWithoutFeedback
               onPress={() => this.setStateUtil('editing', true)}
               style={{ width: '100%', flex: 1 }}
             >
-              <View style={{ width: '100%' }}>
-                <Text>{todo.title}</Text>
-              </View>
-            </TouchableWithoutFeedback>
+            */}
+            <Ionicons
+              name="ios-trash-outline"
+              color={`${todo.title.length > 0 ? 'black' : 'grey'}`}
+              size={23}
+              onPress={() => this.props.onDelete(todo)}
+            />
+            {/*
+              </TouchableWithoutFeedback>
+            */}
           </View>
         )}
       </View>

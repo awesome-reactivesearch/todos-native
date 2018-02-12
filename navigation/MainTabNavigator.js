@@ -2,6 +2,7 @@
 import React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
+import { View, Text } from 'native-base';
 
 import Colors from '../constants/Colors';
 import CONSTANTS from '../constants';
@@ -12,7 +13,16 @@ import TodosScreen from '../screens/TodosScreen';
 const data = [];
 
 const commonNavigationOptions = ({ navigation }) => ({
-  header: null,
+  header: (
+    <View
+      style={{
+        height: 80,
+        marginTop: 20 /* only for IOS to give StatusBar Space */,
+      }}
+    >
+      <Text>This is CustomHeader</Text>
+    </View>
+  ),
   title: navigation.state.routeName,
 });
 

@@ -15,6 +15,7 @@
     "@appbaseio/reactivesearch-native": "^0.4.1",
     "@expo/samples": "2.1.1",
     "@expo/vector-icons": "^6.2.2",
+    "exp": "^49.2.2",
     "expo": "^25.0.0",
     "prop-types": "^15.6.0",
     "react": "16.2.0",
