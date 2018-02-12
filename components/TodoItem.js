@@ -76,6 +76,7 @@ class TodoItem extends Component {
             }}
             onCancelDelete={() => {
               this.setStateUtil('editing', false);
+              console.log('deleting');
               onDelete(todo);
             }}
             onBlur={() => this.setStateUtil('editing', false)}

@@ -36,6 +36,8 @@ class Utils {
       if (newTodos.length > 0) todosData = todosData.concat(newTodos);
       // clean unpredictable duplicates
       todosData = this.removeDuplicates(todosData, '_id');
+      // clean deleted todos
+      todosData = todosData.filter(todo => !todo._deleted);
     }
     // sorting todos based on creation time
     todosData = todosData.sort((a, b) => a.createdAt - b.createdAt);

@@ -83,7 +83,7 @@ class AddEditTodo extends Component {
             onSubmitEditing={this.onSubmit}
             onChangeText={changedTitle => this.setStateUtil('title', changedTitle)}
             value={title}
-            onBlur={onBlur}
+            // onBlur={onBlur}
           />
         </View>
         <MaterialCommunityIcons

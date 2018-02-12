@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, StyleSheet, FlatList } from 'react-native';
+import { ScrollView, StyleSheet, FlatList, KeyboardAvoidingView } from 'react-native';
 import { View } from 'native-base';
 import { ReactiveList } from '@appbaseio/reactivesearch-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import TodoModel from './../api/todos';
 import AddTodoButton from '../components/AddTodoButton';
@@ -52,7 +53,7 @@ export default class AllScreen extends React.Component {
 
   onAllData = (todos, streamData) => {
     // console.log('@onAllData - todos: ', todos);
-    // console.log('@onAllData - streamData: ', streamData);
+    console.log('@onAllData - streamData: ', streamData);
     const todosData = Utils.mergeTodos(todos, streamData);
 
     // setting todosData in screenProps to be shared between all components
@@ -91,7 +92,7 @@ export default class AllScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <ScrollView keyboardShouldPersistTaps="handled">
+        <KeyboardAwareScrollView>
           <ReactiveList
             componentId="ReactiveList"
             dataField="title"
@@ -120,8 +121,7 @@ export default class AllScreen extends React.Component {
               />
             </View>
           ) : null}
-        </ScrollView>
-
+        </KeyboardAwareScrollView>
         <AddTodoButton onPress={() => this.setState({ addingTodo: true })} />
       </View>
     );
