@@ -38,11 +38,13 @@ class TodoModel {
     const { _id, touched, ...todo } = editedTodo;
 
     this.appbaseRef
-      .index({
+      .update({
         type: CONFIG.type,
         id: _id,
         body: {
-          ...todo,
+          doc: {
+            ...todo,
+          },
         },
       })
       .on('data', (response) => {
