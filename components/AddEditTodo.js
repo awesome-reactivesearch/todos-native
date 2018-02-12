@@ -29,6 +29,7 @@ const propTypes = {
   }),
   onAddEdit: PropTypes.func.isRequired,
   onCancelDelete: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -63,6 +64,7 @@ class AddEditTodo extends Component {
 
   render() {
     const { title, completed } = this.state;
+    const { onBlur } = this.props;
     return (
       <View style={{ flex: 0, flexDirection: 'row', width: '85%' }}>
         <View style={styles.row}>
@@ -81,6 +83,7 @@ class AddEditTodo extends Component {
             onSubmitEditing={this.onSubmit}
             onChangeText={changedTitle => this.setStateUtil('title', changedTitle)}
             value={title}
+            onBlur={onBlur}
           />
         </View>
         <MaterialCommunityIcons

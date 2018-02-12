@@ -78,6 +78,7 @@ class TodoItem extends Component {
               this.setStateUtil('editing', false);
               onDelete(todo);
             }}
+            onBlur={() => this.setStateUtil('editing', false)}
           />
         ) : (
           <View

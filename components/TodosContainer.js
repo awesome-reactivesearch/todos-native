@@ -91,7 +91,7 @@ export default class AllScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="handled">
           <ReactiveList
             componentId="ReactiveList"
             dataField="title"
@@ -116,6 +116,7 @@ export default class AllScreen extends React.Component {
                   this.onAddTodo(todo);
                 }}
                 onCancelDelete={() => this.setState({ addingTodo: false })}
+                onBlur={() => this.setState({ addingTodo: false })}
               />
             </View>
           ) : null}
