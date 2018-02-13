@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'native-base';
-import { FAB } from 'react-native-paper';
+import { Icon, View, Fab } from 'native-base';
 import COLORS from '../constants/Colors';
 
 const propTypes = {
@@ -9,16 +8,15 @@ const propTypes = {
 };
 
 const AddTodoButton = ({ onPress }) => (
-  <View
-    style={{
-      position: 'absolute',
-      bottom: 0,
-      right: 0,
-      padding: 25,
-    }}
+  <Fab
+    direction="up"
+    containerStyle={{}}
+    style={{ backgroundColor: COLORS.primary }}
+    position="bottomRight"
+    onPress={onPress}
   >
-    <FAB icon="add" color="white" style={{ backgroundColor: COLORS.primary }} onPress={onPress} />
-  </View>
+    <Icon name="add" />
+  </Fab>
 );
 
 AddTodoButton.propTypes = propTypes;
