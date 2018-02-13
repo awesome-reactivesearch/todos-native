@@ -1,13 +1,8 @@
-/* eslint-disable */
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, Dimensions, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import { View, CheckBox, ListItem, Body, Card, CardItem } from 'native-base';
-// import { Paragraph, Checkbox, Colors, TouchableRipple, withTheme } from 'react-native-paper';
-import { TextField } from '@appbaseio/reactivesearch-native';
+import { View, CheckBox, Body } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
-import AddEditTodo from './AddEditTodo';
-/* eslint-enable */
 
 const styles = StyleSheet.create({
   container: {
@@ -37,13 +32,6 @@ const propTypes = {
 };
 
 class TodoItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editing: false,
-    };
-  }
-
   onTodoItemToggle = (todo, propAction) => {
     propAction({
       ...todo,
@@ -59,87 +47,57 @@ class TodoItem extends Component {
 
   render() {
     const { todo, onAddEdit, onDelete } = this.props;
-    const { editing } = this.state;
-    const { _id } = todo;
 
     return (
       <View style={styles.row}>
-        {editing ? (
-          <AddEditTodo
-            todo={todo}
-            onAddEdit={(editedTodo) => {
-              this.setStateUtil('editing', false);
-              onAddEdit({
-                _id,
-                ...editedTodo,
-              });
-            }}
-            onCancelDelete={() => {
-              this.setStateUtil('editing', false);
-              console.log('deleting');
-              onDelete(todo);
-            }}
-            onBlur={() => this.setStateUtil('editing', false)}
-          />
-        ) : (
-          <View
+        <View
+          style={{
+            flex: 1,
+            width: '100%',
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingRight: 10,
+            paddingVertical: 5,
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => this.onTodoItemToggle(todo, onAddEdit)}
             style={{
               flex: 1,
               width: '100%',
               flexDirection: 'row',
-              alignItems: 'center',
-              paddingRight: 10,
-              paddingVertical: 5,
             }}
           >
-            <TouchableOpacity
-              onPress={() => this.onTodoItemToggle(todo, onAddEdit)}
+            <CheckBox checked={todo.completed} />
+            <Body
               style={{
                 flex: 1,
-                width: '100%',
-                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start',
+                paddingLeft: 25,
               }}
             >
-              <CheckBox checked={todo.completed} />
-              <Body
+              <Text
                 style={{
-                  flex: 1,
-                  justifyContent: 'flex-start',
-                  alignItems: 'flex-start',
-                  paddingLeft: 25,
+                  color: todo.completed ? 'grey' : 'black',
+                  textDecorationLine: todo.completed ? 'line-through' : 'none',
                 }}
               >
-                <Text
-                  style={{
-                    color: todo.completed ? 'grey' : 'black',
-                    textDecorationLine: todo.completed ? 'line-through' : 'none',
-                  }}
-                >
-                  {todo.title}
-                </Text>
-              </Body>
-            </TouchableOpacity>
-            {/*
-            <TouchableWithoutFeedback
-              onPress={() => this.setStateUtil('editing', true)}
-              style={{ width: '100%', flex: 1 }}
-            >
-            */}
-            <TouchableOpacity
-              onPress={() => this.props.onDelete(todo)}
-              style={{ paddingLeft: 25, paddingRight: 15 }}
-            >
-              <Ionicons
-                name="ios-trash-outline"
-                color={`${todo.title.length > 0 ? 'black' : 'grey'}`}
-                size={23}
-              />
-            </TouchableOpacity>
-            {/*
-              </TouchableWithoutFeedback>
-            */}
-          </View>
-        )}
+                {todo.title}
+              </Text>
+            </Body>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => onDelete(todo)}
+            style={{ paddingLeft: 25, paddingRight: 15 }}
+          >
+            <Ionicons
+              name="ios-trash-outline"
+              color={`${todo.title.length > 0 ? 'black' : 'grey'}`}
+              size={23}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

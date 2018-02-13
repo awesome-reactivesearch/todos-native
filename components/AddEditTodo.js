@@ -1,25 +1,8 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, TextInput, Dimensions, Text, TouchableOpacity } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native';
 import { View, Body, CheckBox } from 'native-base';
-// import { Paragraph, Checkbox, Colors, TouchableRipple, withTheme } from 'react-native-paper';
-import { TextField } from '@appbaseio/reactivesearch-native';
 import { Ionicons } from '@expo/vector-icons';
-/* eslint-enable */
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: Colors.white,
-//     paddingVertical: 8,
-//   },
-
-//   row: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//   },
-// });
 
 const propTypes = {
   todo: PropTypes.shape({
@@ -101,12 +84,6 @@ class AddEditTodo extends Component {
             onBlur={onBlur}
           />
         </Body>
-        {/*
-            <TouchableWithoutFeedback
-              onPress={() => this.setStateUtil('editing', true)}
-              style={{ width: '100%', flex: 1 }}
-            >
-            */}
         <TouchableOpacity
           onPress={() => this.props.onCancelDelete}
           style={{ paddingLeft: 25, paddingRight: 15 }}
@@ -117,9 +94,6 @@ class AddEditTodo extends Component {
             size={23}
           />
         </TouchableOpacity>
-        {/*
-              </TouchableWithoutFeedback>
-            */}
       </View>
     );
   }

@@ -1,19 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, StyleSheet, FlatList, KeyboardAvoidingView } from 'react-native';
+import { ScrollView, StyleSheet, FlatList } from 'react-native';
 import { View } from 'native-base';
 import { ReactiveList } from '@appbaseio/reactivesearch-native';
-// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import TodoModel from './../api/todos';
-import AddTodoButton from '../components/AddTodoButton';
-import TodoItem from '../components/TodoItem';
 import Utils from '../utils';
-import AddEditTodo from '../components/AddEditTodo';
 import TODO_TYPE from '../types/todo';
 import CONSTANTS from '../constants';
-
 import Header from '../components/Header';
+import TodoModel from './../api/todos';
+import AddEditTodo from '../components/AddEditTodo';
+import AddTodoButton from '../components/AddTodoButton';
+import TodoItem from '../components/TodoItem';
 
 const styles = StyleSheet.create({
   container: {
