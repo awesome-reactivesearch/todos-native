@@ -17,7 +17,8 @@ class TodoModel {
 
   add(todo) {
     const body = {
-      ...todo,
+      title: todo.title,
+      completed: todo.completed,
       createdAt: Date.now(),
     };
 
@@ -43,7 +44,8 @@ class TodoModel {
         id: _id,
         body: {
           doc: {
-            ...todo,
+            title: todo.title,
+            completed: todo.completed,
           },
         },
       })
