@@ -1,14 +1,18 @@
 {
   "expo": {
     "name": "Reactive Todos",
-    "description": "A shared todos list built with @appbaseio/reactivesearch-native.",
+    "description": "Built using ReactiveSearch Native",
     "slug": "todos",
     "privacy": "public",
     "sdkVersion": "25.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./icon.png",
+    "androidStatusBar": {
+      "backgroundColor": "#2f95dc"
+    },
+    "primaryColor": "#2f95dc",
     "ios": {
       "bundleIdentifier": "com.appbaseio.todos"
     }
