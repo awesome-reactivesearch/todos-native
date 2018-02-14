@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, StyleSheet, FlatList } from 'react-native';
+import { ScrollView, StyleSheet, FlatList, StatusBar } from 'react-native';
 import { View } from 'native-base';
 import { ReactiveList } from '@appbaseio/reactivesearch-native';
 
 import Utils from '../utils';
 import TODO_TYPE from '../types/todo';
 import CONSTANTS from '../constants';
+import COLORS from '../constants/Colors';
 import Header from '../components/Header';
 import TodoModel from './../api/todos';
 import AddTodo from '../components/AddTodo';
@@ -89,6 +90,7 @@ export default class TodosContainer extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <Header />
+        <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
         <ScrollView>
           <ReactiveList
             componentId="ReactiveList"
