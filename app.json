@@ -1,5 +1,19 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "name": "Reactive Todos",
+    "description": "Built using ReactiveSearch Native",
+    "slug": "todos",
+    "privacy": "public",
+    "sdkVersion": "25.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./icon.png",
+    "ios": {
+      "bundleIdentifier": "com.appbaseio.todos"
+    }
   }
 }

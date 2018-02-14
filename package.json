@@ -2,11 +2,6 @@
   "name": "todos",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "jest-expo": "25.0.0",
-    "react-native-scripts": "1.11.1",
-    "react-test-renderer": "16.2.0"
-  },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "start": "react-native-scripts start",
@@ -19,10 +14,24 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@appbaseio/reactivesearch-native": "^0.4.1",
     "@expo/vector-icons": "^6.2.2",
     "expo": "^25.0.0",
+    "prop-types": "^15.6.0",
     "react": "16.2.0",
-    "react-native": "0.52.0",
-    "react-navigation": "^1.0.3"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
+    "react-navigation": "^1.0.0-beta.27"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
+    "prettier-eslint": "^8.8.1",
+    "react-native-scripts": "1.11.1",
+    "react-test-renderer": "16.2.0"
   }
 }
