@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Reactive Todos",
-    "description": "Built using ReactiveSearch Native",
+    "description": "A shared todos list built with @appbaseio/reactivesearch-native.",
     "slug": "todos",
     "privacy": "public",
     "sdkVersion": "25.0.0",

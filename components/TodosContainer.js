@@ -15,12 +15,6 @@ import AddTodoButton from '../components/AddTodoButton';
 import TodoItem from '../components/TodoItem';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    paddingVertical: 8,
-  },
-
   row: {
     top: 15,
     flex: 1,
