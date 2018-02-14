@@ -44,7 +44,7 @@ export default class TodosContainer extends React.Component {
   };
 
   componentWillMount() {
-    this.model = new TodoModel('react-todos');
+    this.api = new TodoModel('react-todos');
   }
 
   onAllData = (todos, streamData) => {
@@ -64,7 +64,7 @@ export default class TodosContainer extends React.Component {
         data={filteredData || []}
         keyExtractor={item => item._id}
         renderItem={({ item: todo }) => (
-          <TodoItem todo={todo} onAddEdit={this.model.update} onDelete={this.model.destroy} />
+          <TodoItem todo={todo} onAddEdit={this.api.update} onDelete={this.api.destroy} />
         )}
       />
     );
@@ -92,26 +92,23 @@ export default class TodosContainer extends React.Component {
         <ScrollView>
           <ReactiveList
             componentId="ReactiveList"
-            dataField="title"
             onAllData={this.onAllData}
-            pagination={false}
             stream
-            react={{
-              and: ['AllTodosSensor'],
-            }}
-            showResultStats={false}
             defaultQuery={() => ({
               query: {
                 match_all: {},
               },
             })}
+            dataField="title"
+            showResultStats={false}
+            pagination={false}
           />
           {this.state.addingTodo ? (
             <View style={styles.row}>
               <AddTodo
                 onAdd={(todo) => {
                   this.setState({ addingTodo: false });
-                  this.model.addTodo(todo);
+                  this.api.add(todo);
                 }}
                 onCancelDelete={() => this.setState({ addingTodo: false })}
                 onBlur={() => this.setState({ addingTodo: false })}

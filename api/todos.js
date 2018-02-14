@@ -15,7 +15,7 @@ class TodoModel {
     });
   }
 
-  addTodo(todo) {
+  add(todo) {
     const body = {
       ...todo,
       createdAt: Date.now(),
