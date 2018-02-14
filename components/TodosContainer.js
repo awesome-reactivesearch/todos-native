@@ -64,7 +64,7 @@ export default class TodosContainer extends React.Component {
         data={filteredData || []}
         keyExtractor={item => item._id}
         renderItem={({ item: todo }) => (
-          <TodoItem todo={todo} onAddEdit={this.api.update} onDelete={this.api.destroy} />
+          <TodoItem todo={todo} onUpdate={this.api.update} onDelete={this.api.destroy} />
         )}
       />
     );

@@ -27,7 +27,7 @@ const propTypes = {
     completed: PropTypes.bool,
     createdAt: PropTypes.number,
   }).isRequired,
-  onAddEdit: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 
@@ -46,7 +46,7 @@ class TodoItem extends Component {
   };
 
   render() {
-    const { todo, onAddEdit, onDelete } = this.props;
+    const { todo, onUpdate, onDelete } = this.props;
 
     return (
       <View style={styles.row}>
@@ -61,7 +61,7 @@ class TodoItem extends Component {
           }}
         >
           <TouchableOpacity
-            onPress={() => this.onTodoItemToggle(todo, onAddEdit)}
+            onPress={() => this.onTodoItemToggle(todo, onUpdate)}
             style={{
               flex: 1,
               width: '100%',
