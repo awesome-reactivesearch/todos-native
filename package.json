@@ -1,20 +1,21 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "todos-native",
+  "version": "0.1.0",
   "private": true,
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll",
-    "start": "exp start -c --lan",
-    "lint": "eslint .",
-    "clean": "watchman watch-del-all",
-    "postinstall": "npm run clean && npm run start"
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "node node_modules/jest/bin/jest.js"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@appbaseio/reactivesearch-native": "^0.4.1",
+    "@appbaseio/reactivesearch-native": "^0.5.0",
     "@expo/vector-icons": "^6.2.2",
-    "exp": "^49.2.2",
     "expo": "^25.0.0",
     "prop-types": "^15.6.0",
     "react": "16.2.0",
@@ -29,9 +30,8 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
-    "jest-expo": "^25.0.0",
     "prettier-eslint": "^8.8.1",
-    "react-native-scripts": "1.8.1",
-    "react-test-renderer": "16.0.0"
+    "react-native-scripts": "1.11.1",
+    "react-test-renderer": "16.2.0"
   }
 }
