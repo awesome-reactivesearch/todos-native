@@ -90,7 +90,7 @@ export default class TodosContainer extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <Header />
-        <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
+        <StatusBar backgroundColor={COLORS.primary} barStyle="dark-content" />
         <ScrollView>
           <ReactiveList
             componentId="ReactiveList"
