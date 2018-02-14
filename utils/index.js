@@ -1,5 +1,3 @@
-// Based on https://github.com/tastejs/todomvc/blob/gh-pages/examples/react/js/utils.js
-
 class Utils {
   // [source] https://gist.github.com/lmfresneda/9158e06a93a819a78b30cc175573a8d3
   static removeDuplicates = (arr, prop) => {

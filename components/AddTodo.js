@@ -10,7 +10,7 @@ const propTypes = {
     completed: PropTypes.bool,
     createdAt: PropTypes.number,
   }),
-  onAddEdit: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
   onCancelDelete: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
 };
@@ -23,7 +23,7 @@ const defaultProps = {
   },
 };
 
-class AddEditTodo extends Component {
+class AddTodo extends Component {
   constructor(props) {
     super(props);
     const { title, completed, createdAt } = this.props.todo;
@@ -35,7 +35,7 @@ class AddEditTodo extends Component {
   }
 
   onSubmit = () => {
-    if (this.state.title.length > 0) this.props.onAddEdit(this.state);
+    if (this.state.title.length > 0) this.props.onAdd(this.state);
     return null;
   };
 
@@ -99,7 +99,7 @@ class AddEditTodo extends Component {
   }
 }
 
-AddEditTodo.propTypes = propTypes;
-AddEditTodo.defaultProps = defaultProps;
+AddTodo.propTypes = propTypes;
+AddTodo.defaultProps = defaultProps;
 
-export default AddEditTodo;
+export default AddTodo;

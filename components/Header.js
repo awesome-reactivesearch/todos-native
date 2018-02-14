@@ -4,7 +4,7 @@ import { Header, Body, Title } from 'native-base';
 
 import COLORS from '../constants/Colors';
 
-const HeaderApp = () => (
+const AppHeader = () => (
   <Header style={{ backgroundColor: COLORS.primary }}>
     <Body
       style={{
@@ -25,4 +25,4 @@ const HeaderApp = () => (
   </Header>
 );
 
-export default HeaderApp;
+export default AppHeader;

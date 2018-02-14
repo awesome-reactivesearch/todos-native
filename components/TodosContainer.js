@@ -9,7 +9,7 @@ import TODO_TYPE from '../types/todo';
 import CONSTANTS from '../constants';
 import Header from '../components/Header';
 import TodoModel from './../api/todos';
-import AddEditTodo from '../components/AddEditTodo';
+import AddTodo from '../components/AddTodo';
 import AddTodoButton from '../components/AddTodoButton';
 import TodoItem from '../components/TodoItem';
 
@@ -38,7 +38,7 @@ const propTypes = {
   screen: PropTypes.oneOf([CONSTANTS.ALL, CONSTANTS.ACTIVE, CONSTANTS.COMPLETED]).isRequired,
 };
 
-export default class AllScreen extends React.Component {
+export default class TodosContainer extends React.Component {
   state = {
     addingTodo: false,
   };
@@ -46,10 +46,6 @@ export default class AllScreen extends React.Component {
   componentWillMount() {
     this.model = new TodoModel('react-todos');
   }
-
-  onAddTodo = (todo) => {
-    this.model.addTodo(todo);
-  };
 
   onAllData = (todos, streamData) => {
     // console.log('@onAllData - todos: ', todos);
@@ -112,10 +108,10 @@ export default class AllScreen extends React.Component {
           />
           {this.state.addingTodo ? (
             <View style={styles.row}>
-              <AddEditTodo
-                onAddEdit={(todo) => {
+              <AddTodo
+                onAdd={(todo) => {
                   this.setState({ addingTodo: false });
-                  this.onAddTodo(todo);
+                  this.model.addTodo(todo);
                 }}
                 onCancelDelete={() => this.setState({ addingTodo: false })}
                 onBlur={() => this.setState({ addingTodo: false })}
@@ -129,4 +125,4 @@ export default class AllScreen extends React.Component {
   }
 }
 
-AllScreen.propTypes = propTypes;
+TodosContainer.propTypes = propTypes;

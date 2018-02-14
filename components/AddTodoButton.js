@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, View, Fab } from 'native-base';
+import { Icon, Fab } from 'native-base';
 import COLORS from '../constants/Colors';
 
 const propTypes = {
