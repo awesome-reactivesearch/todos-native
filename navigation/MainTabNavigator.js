@@ -7,9 +7,6 @@ import Colors from '../constants/Colors';
 import CONSTANTS from '../constants';
 import TodosScreen from '../screens/TodosScreen';
 
-// todos data to be shared between all screens
-const data = [];
-
 const commonNavigationOptions = ({ navigation }) => ({
   header: null,
   title: navigation.state.routeName,
@@ -58,6 +55,4 @@ const TabNav = TabNavigator(
   },
 );
 
-const TabNavExport = () => <TabNav screenProps={{ todos: { data } }} />;
-
-export default TabNavExport;
+export default TabNav;
