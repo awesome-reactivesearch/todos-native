@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, StyleSheet, FlatList, StatusBar } from 'react-native';
+import { ScrollView, StyleSheet, FlatList, StatusBar, Platform } from 'react-native';
 import { View } from 'native-base';
 import { ReactiveList } from '@appbaseio/reactivesearch-native';
 
 import Utils from '../utils';
-import TODO_TYPE from '../types/todo';
 import CONSTANTS from '../constants';
 import COLORS from '../constants/Colors';
 import Header from '../components/Header';
@@ -27,9 +26,6 @@ const styles = StyleSheet.create({
 });
 
 const propTypes = {
-  screenProps: PropTypes.shape({
-    todos: TODO_TYPE,
-  }).isRequired,
   screen: PropTypes.oneOf([CONSTANTS.ALL, CONSTANTS.ACTIVE, CONSTANTS.COMPLETED]).isRequired,
 };
 
@@ -43,12 +39,8 @@ export default class TodosContainer extends React.Component {
   }
 
   onAllData = (todos, streamData) => {
-    // console.log('@onAllData - todos: ', todos);
-    // console.log('@onAllData - streamData: ', streamData);
+    // merge streaming todos data along with current todos
     const todosData = Utils.mergeTodos(todos, streamData);
-
-    // setting todosData in screenProps to be shared between all components
-    this.props.screenProps.todos.data = todosData;
 
     // filter data based on "screen": [All | Active | Completed]
     const filteredData = this.filterTodosData(todosData);
@@ -81,10 +73,15 @@ export default class TodosContainer extends React.Component {
   };
 
   render() {
+    const isAndroid = Platform.OS === 'android';
     return (
       <View style={{ flex: 1 }}>
         <Header />
-        <StatusBar backgroundColor={COLORS.primary} barStyle="dark-content" />
+        {isAndroid ? (
+          <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
+        ) : (
+          <StatusBar backgroundColor={COLORS.primary} barStyle="dark-content" />
+        )}
         <ScrollView>
           <ReactiveList
             componentId="ReactiveList"
