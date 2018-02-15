@@ -1,6 +1,6 @@
 import Expo from 'expo';
 import React from 'react';
-import { StatusBar, View, Platform } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Container, Spinner } from 'native-base';
 import { ReactiveBase } from '@appbaseio/reactivesearch-native';
@@ -41,11 +41,9 @@ export default class RootNavigator extends React.Component {
       );
     }
 
-    const spaceFixer = Platform.OS === 'ios' ? -45 : -80;
-
     return (
       <ReactiveBase app={CONFIG.app} credentials={CONFIG.credentials} type={CONFIG.type}>
-        <Container style={{ marginTop: spaceFixer }}>
+        <Container>
           <RootStackNavigator />
         </Container>
       </ReactiveBase>
