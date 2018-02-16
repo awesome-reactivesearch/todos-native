@@ -34,7 +34,7 @@ export default class TodosContainer extends React.Component {
     addingTodo: false,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.api = new TodoModel('react-todos');
   }
 
@@ -48,7 +48,7 @@ export default class TodosContainer extends React.Component {
     return (
       <FlatList
         style={{ width: '100%', top: 15 }}
-        data={filteredData || []}
+        data={filteredData}
         keyExtractor={item => item._id}
         renderItem={({ item: todo }) => (
           <TodoItem todo={todo} onUpdate={this.api.update} onDelete={this.api.destroy} />
@@ -85,13 +85,13 @@ export default class TodosContainer extends React.Component {
         <ScrollView>
           <ReactiveList
             componentId="ReactiveList"
-            onAllData={this.onAllData}
-            stream
             defaultQuery={() => ({
               query: {
                 match_all: {},
               },
             })}
+            stream
+            onAllData={this.onAllData}
             dataField="title"
             showResultStats={false}
             pagination={false}
