@@ -68,7 +68,10 @@ class TodoItem extends Component {
               flexDirection: 'row',
             }}
           >
-            <CheckBox checked={todo.completed} />
+            <CheckBox
+              checked={todo.completed}
+              onPress={() => this.onTodoItemToggle(todo, onUpdate)}
+            />
             <Body
               style={{
                 flex: 1,
