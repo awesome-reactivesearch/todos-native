@@ -1,3 +1,4 @@
+// all the app configurations
 export default {
     url: 'https://scalr.api.appbase.io',
     app: 'todos-native',

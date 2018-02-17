@@ -15,6 +15,7 @@ class TodoModel {
         });
     }
 
+    // adds new todo to Elasticsearch
     addTodo(todo) {
         const body = {
             ...todo,
@@ -34,6 +35,7 @@ class TodoModel {
             });
     }
 
+    // updates an existing todo on Elasticsearch
     update = (editedTodo) => {
         const { _id, touched, ...todo } = editedTodo;
 
@@ -55,6 +57,7 @@ class TodoModel {
             });
     };
 
+    // remove a todo from Elasticsearch
     destroy = (todo) => {
         this.appbaseRef
             .delete({

@@ -4,6 +4,7 @@ import { Header, Body, Title } from 'native-base';
 
 import COLORS from '../constants/Colors';
 
+// static app header
 const AppHeader = () => (
     <Header style={{ backgroundColor: COLORS.primary, height: 75 }}>
         <Body

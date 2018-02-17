@@ -1,5 +1,6 @@
 class Utils {
     // [source] https://gist.github.com/lmfresneda/9158e06a93a819a78b30cc175573a8d3
+    // this method removes duplicates in an array
     static removeDuplicates = (arr, prop) => {
         const obj = {};
         for (let i = 0, len = arr.length; i < len; i++) {
@@ -10,8 +11,9 @@ class Utils {
         return newArr;
     };
 
+    // merges the streaming todos with the current ones and returns
+    // all todos sorted on the basis of their creation time
     static mergeTodos(todos, streamData) {
-        // note: don't judge for the logic
         let todosData = todos;
         if (todosData.length > 0 || streamData.length > 0) {
             todosData = todosData.map((todo) => {
