@@ -1,7 +1,6 @@
 import Expo from 'expo';
 import React from 'react';
 import { StatusBar, View } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 import { Container, Spinner } from 'native-base';
 import { ReactiveBase } from '@appbaseio/reactivesearch-native';
 
@@ -9,13 +8,7 @@ import CONFIG from '../constants/Config';
 import COLORS from '../constants/Colors';
 import MainTabNavigator from './MainTabNavigator';
 
-const RootStackNavigator = StackNavigator({
-  Main: {
-    screen: MainTabNavigator,
-  },
-});
-
-export default class RootNavigator extends React.Component {
+export default class RootComponent extends React.Component {
   state = {
     isReady: false,
   };
@@ -44,7 +37,7 @@ export default class RootNavigator extends React.Component {
     return (
       <ReactiveBase app={CONFIG.app} credentials={CONFIG.credentials} type={CONFIG.type}>
         <Container>
-          <RootStackNavigator />
+          <MainTabNavigator />
         </Container>
       </ReactiveBase>
     );
