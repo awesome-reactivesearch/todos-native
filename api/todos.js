@@ -16,7 +16,7 @@ class TodoModel {
     }
 
     // adds new todo to Elasticsearch
-    addTodo(todo) {
+    add(todo) {
         const body = {
             ...todo,
             createdAt: Date.now(),

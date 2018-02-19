@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 
 // will render todos based on the active screen: all, active or completed
 export default class TodosContainer extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         // includes the methods for creation, updation and deletion
         this.api = new TodoModel('react-todos');
     }
