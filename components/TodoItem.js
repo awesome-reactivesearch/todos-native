@@ -39,12 +39,6 @@ class TodoItem extends Component {
     });
   };
 
-  setStateUtil = (property, value = undefined) => {
-    this.setState({
-      [property]: value,
-    });
-  };
-
   render() {
     const { todo, onUpdate, onDelete } = this.props;
 
