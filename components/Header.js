@@ -16,7 +16,6 @@ const AppHeader = () => (
             <Title
                 style={{
                     color: 'white',
-                    top: Platform.OS === 'ios' ? -7 : 0,
                     paddingLeft: 7,
                     paddingTop: 20,
                 }}

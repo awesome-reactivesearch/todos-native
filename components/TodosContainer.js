@@ -1,15 +1,15 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { View, Text } from 'native-base';
 
 import TodoModel from './../api/todos';
 import Header from '../components/Header';
+import COLORS from '../constants/Colors';
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffffff',
-        paddingVertical: 8,
     },
     row: {
         top: 15,
@@ -38,6 +38,7 @@ export default class TodosContainer extends React.Component {
         return (
             <View style={styles.container}>
                 <Header />
+                <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
                 <View style={styles.center}>
                     <Text>Todos Container</Text>
                 </View>
