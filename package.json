@@ -14,7 +14,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@appbaseio/reactivesearch-native": "^0.4.1",
+    "@appbaseio/reactivesearch-native": "^0.5.0",
     "@expo/vector-icons": "^6.2.2",
     "expo": "^25.0.0",
     "prop-types": "^15.6.0",
